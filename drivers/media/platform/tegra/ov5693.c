@@ -35,7 +35,6 @@
 #include <media/camera_common.h>
 #include "cam_dev/camera_gpio.h"
 #include "nvc_utilities.h"
-#include <drivers/media/platform/tegra/nvc_utilities.h>
 
 #define OV5693_ID			0x5693
 #define OV5693_SENSOR_TYPE		NVC_IMAGER_TYPE_RAW
@@ -3632,8 +3631,9 @@ static struct ov5693_platform_data *ov5693_parse_dt(struct i2c_client *client)
 	/* MCLK clock info */
 	of_property_read_string(np, "mclk", &pdata->mclk_name);
 
-	/* get cap info */
-	nvc_imager_parse_caps(np, pdata->cap, pdata->static_info);
+	/* ov5693 power functions */
+	pdata->power_on = ov5693_platform_power_on;
+	pdata->power_off = ov5693_platform_power_off;
 
 	return pdata;
 }
