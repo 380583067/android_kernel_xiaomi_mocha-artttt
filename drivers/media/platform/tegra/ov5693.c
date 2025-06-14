@@ -35,6 +35,7 @@
 #include <media/camera_common.h>
 #include "cam_dev/camera_gpio.h"
 #include "nvc_utilities.h"
+#include <drivers/media/platform/tegra/nvc_utilities.h>
 
 #define OV5693_ID			0x5693
 #define OV5693_SENSOR_TYPE		NVC_IMAGER_TYPE_RAW
